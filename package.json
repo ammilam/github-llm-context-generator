@@ -1,17 +1,52 @@
 {
-  "name": "set-model-context-from-github",
-  "version": "1.0.0",
-  "description": "A Node.js module that loads data from GitHub repositories and creates a queryable knowledge graph for use as context with Large Language Models",
+  "name": "github-context-generator",
+  "version": "0.1.0",
+  "description": "Generate LLM-ready context from GitHub repositories - extract code patterns, implementations, and documentation for AI-assisted coding",
   "main": "src/index.js",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "example": "node examples/basic-usage.js",
+    "example:vibe": "node examples/vibe-coding.js",
+    "example:targeted": "node examples/targeted-paths.js",
+    "prepublishOnly": "npm test"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/github-context-generator.git"
+  },
+  "homepage": "https://github.com/yourusername/github-context-generator#readme",
+  "bugs": {
+    "url": "https://github.com/yourusername/github-context-generator/issues"
+  },
+  "keywords": [
+    "github",
+    "llm",
+    "ai",
+    "context",
+    "code-analysis",
+    "knowledge-graph",
+    "vibe-coding",
+    "gemini",
+    "openai",
+    "code-generation",
+    "repository-analysis",
+    "documentation",
+    "api"
+  ],
+  "author": "Your Name <your.email@example.com>",
+  "license": "MIT",
   "type": "commonjs",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "files": [
+    "src/",
+    "README.md",
+    "LICENSE",
+    "examples/"
+  ],
   "devDependencies": {
     "jest": "^30.1.3"
   },

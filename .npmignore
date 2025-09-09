@@ -1,0 +1,58 @@
+# Test files
+test-*.js
+*.test.js
+__tests__/
+coverage/
+.nyc_output/
+jest.config.js
+
+# Development files
+.env
+.env.*
+.gitignore
+.github/
+
+# Repository storage (don't publish cloned repos)
+repos/
+test-repos/
+context-output/
+
+# Generated files
+*.graph.json
+*.md.backup
+agent-context.md
+
+# Examples that are for development only
+test-*.js
+
+# CI/CD
+.github/
+.travis.yml
+.circleci/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.log
+
+# Documentation sources (keep README.md)
+docs/
+contributing.md
+
+# Keep only essential files for npm package
+# src/ - included by default
+# examples/ - included by default
+# README.md - included by default
+# LICENSE - included by default
+# package.json - included by default
