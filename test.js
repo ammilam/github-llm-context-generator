@@ -8,11 +8,9 @@ async function generatePrompt() {
 	});
 
 	try {
-		const s = await kg.loadRepositories([[{
-			url: 'https://github.com/google/adk-samples',
-			branch: 'main'
-			file
-		}]]);
+		const s = await kg.loadRepositories([
+			'https://github.com/google/adk-samples',
+		]);
 
 	 const context = await kg.getContext('root_agent', {
       format: 'markdown',
