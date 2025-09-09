@@ -1,5 +1,5 @@
 {
-  "name": "github-context-generator",
+  "name": "github-llm-context-generator",
   "version": "0.1.0",
   "description": "Generate LLM-ready context from GitHub repositories - extract code patterns, implementations, and documentation for AI-assisted coding",
   "main": "src/index.js",
@@ -14,11 +14,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/github-context-generator.git"
+    "url": "git+https://github.com/yourusername/github-llm-context-generator.git"
   },
-  "homepage": "https://github.com/yourusername/github-context-generator#readme",
+  "homepage": "https://github.com/yourusername/github-llm-context-generator#readme",
   "bugs": {
-    "url": "https://github.com/yourusername/github-context-generator/issues"
+    "url": "https://github.com/yourusername/github-llm-context-generator/issues"
   },
   "keywords": [
     "github",
@@ -35,7 +35,7 @@
     "documentation",
     "api"
   ],
-  "author": "Your Name <your.email@example.com>",
+  "author": "Andrew Milam <andrewmichaelmilam@gmail.com>",
   "license": "MIT",
   "type": "commonjs",
   "engines": {

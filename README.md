@@ -1,6 +1,6 @@
 # GitHub Context Generator
 
-[![npm version](https://badge.fury.io/js/github-context-generator.svg)](https://badge.fury.io/js/github-context-generator)
+[![npm version](https://badge.fury.io/js/github-llm-context-generator.svg)](https://badge.fury.io/js/github-llm-context-generator)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Generate LLM-ready context from GitHub repositories for AI-assisted coding. Extract code patterns, implementations, and documentation to provide rich context for Large Language Models like Gemini, GPT-4, and Claude.
@@ -18,13 +18,13 @@ Generate LLM-ready context from GitHub repositories for AI-assisted coding. Extr
 ## Installation
 
 ```bash
-npm install github-context-generator
+npm install github-llm-context-generator
 ```
 
 ## Quick Start
 
 ```javascript
-const GitHubContextGenerator = require('github-context-generator');
+const GitHubContextGenerator = require('github-llm-context-generator');
 
 // Initialize the generator
 const generator = new GitHubContextGenerator({
@@ -253,9 +253,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-- 🐛 [Report bugs](https://github.com/yourusername/github-context-generator/issues)
-- 💡 [Request features](https://github.com/yourusername/github-context-generator/issues)
-- 📖 [Read the docs](https://github.com/yourusername/github-context-generator#readme)
+- 🐛 [Report bugs](https://github.com/yourusername/github-llm-context-generator/issues)
+- 💡 [Request features](https://github.com/yourusername/github-llm-context-generator/issues)
+- 📖 [Read the docs](https://github.com/yourusername/github-llm-context-generator#readme)
 
 ---
 
