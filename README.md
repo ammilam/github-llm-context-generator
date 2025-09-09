@@ -253,9 +253,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Support
 
-- 🐛 [Report bugs](https://github.com/yourusername/github-llm-context-generator/issues)
-- 💡 [Request features](https://github.com/yourusername/github-llm-context-generator/issues)
-- 📖 [Read the docs](https://github.com/yourusername/github-llm-context-generator#readme)
+- 🐛 [Report bugs](https://github.com/ammilam/github-llm-context-generator/issues)
+- 💡 [Request features](https://github.com/ammilam/github-llm-context-generator/issues)
+- 📖 [Read the docs](https://github.com/ammilam/github-llm-context-generator#readme)
 
 ---
 

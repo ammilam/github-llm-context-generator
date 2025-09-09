@@ -14,11 +14,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/yourusername/github-llm-context-generator.git"
+    "url": "git+https://github.com/ammilam/github-llm-context-generator.git"
   },
-  "homepage": "https://github.com/yourusername/github-llm-context-generator#readme",
+  "homepage": "https://github.com/ammilam/github-llm-context-generator#readme",
   "bugs": {
-    "url": "https://github.com/yourusername/github-llm-context-generator/issues"
+    "url": "https://github.com/ammilam/github-llm-context-generator/issues"
   },
   "keywords": [
     "github",
