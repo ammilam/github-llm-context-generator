@@ -1,10 +1,13 @@
 name: Release Please
 
+# DISABLED - Enable by uncommenting below and configuring GitHub Actions permissions
+# on:
+#   push:
+#     branches:
+#       - main
+#       - master
 on:
-  push:
-    branches:
-      - main
-      - master
+  workflow_dispatch:  # Only manual trigger for now
 
 permissions:
   contents: write

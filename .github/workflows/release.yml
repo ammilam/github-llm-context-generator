@@ -1,5 +1,6 @@
-name: Release
+name: Auto Release and Publish
 
+# Automatically creates releases and publishes to npm on push to main
 on:
   push:
     branches:
@@ -47,9 +48,12 @@ jobs:
             VERSION_BUMP="major"
           fi
           
-          # Check if this is a merge commit
-          if git log -1 --pretty=%B | grep -q "^Merge"; then
-            echo "Merge detected, bumping version..."
+          # Skip if commit message contains [skip ci] or [skip release]
+          if git log -1 --pretty=%B | grep -qE '\[skip ci\]|\[skip release\]'; then
+            echo "Skip release detected in commit message"
+            echo "new_version=skip" >> $GITHUB_OUTPUT
+          else
+            echo "Processing release..."
             
             # Configure git
             git config --local user.email "action@github.com"
@@ -64,9 +68,6 @@ jobs:
             
             # Push changes and tag
             git push origin HEAD:main --follow-tags
-          else
-            echo "Not a merge commit, skipping release"
-            echo "new_version=skip" >> $GITHUB_OUTPUT
           fi
       
       - name: Create GitHub Release
