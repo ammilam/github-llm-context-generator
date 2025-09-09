@@ -19,6 +19,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
       
       - uses: actions/setup-node@v3
         with:
@@ -26,14 +27,35 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
       
       - name: Install dependencies
-        run: npm install
+        run: npm ci || npm install
       
       - name: Run tests
         run: npm test
       
+      - name: Clean working directory
+        run: |
+          # Remove any files created by other workflows
+          git status
+          git checkout -- .
+          git clean -fd
+          
       - name: Bump version and create tag
         id: version
         run: |
+          # Skip if this is already a release commit
+          if git log -1 --pretty=%B | grep -q "^chore: release"; then
+            echo "This is already a release commit, skipping"
+            echo "new_version=skip" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
+          # Skip if commit message contains [skip ci] or [skip release]
+          if git log -1 --pretty=%B | grep -qE '\[skip ci\]|\[skip release\]'; then
+            echo "Skip release detected in commit message"
+            echo "new_version=skip" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+          
           # Determine version bump based on commit messages
           # Default to patch version
           VERSION_BUMP="patch"
@@ -48,27 +70,22 @@ jobs:
             VERSION_BUMP="major"
           fi
           
-          # Skip if commit message contains [skip ci] or [skip release]
-          if git log -1 --pretty=%B | grep -qE '\[skip ci\]|\[skip release\]'; then
-            echo "Skip release detected in commit message"
-            echo "new_version=skip" >> $GITHUB_OUTPUT
-          else
-            echo "Processing release..."
-            
-            # Configure git
-            git config --local user.email "action@github.com"
-            git config --local user.name "GitHub Action"
-            
-            # Bump version
-            npm version $VERSION_BUMP -m "chore: release %s [skip ci]"
-            
-            # Get the new version
-            NEW_VERSION=$(node -p "require('./package.json').version")
-            echo "new_version=v$NEW_VERSION" >> $GITHUB_OUTPUT
-            
-            # Push changes and tag
-            git push origin HEAD:main --follow-tags
-          fi
+          # Process the release
+          echo "Processing release with $VERSION_BUMP bump..."
+          
+          # Configure git
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          # Bump version
+          npm version $VERSION_BUMP -m "chore: release %s [skip ci]"
+          
+          # Get the new version
+          NEW_VERSION=$(node -p "require('./package.json').version")
+          echo "new_version=v$NEW_VERSION" >> $GITHUB_OUTPUT
+          
+          # Push changes and tag
+          git push origin HEAD:main --follow-tags
       
       - name: Create GitHub Release
         if: steps.version.outputs.new_version != 'skip'

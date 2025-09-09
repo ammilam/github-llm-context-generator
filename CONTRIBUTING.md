@@ -6,7 +6,7 @@ Thank you for your interest in contributing to GitHub Context Generator! We welc
 
 ### Reporting Bugs
 
-1. Check if the bug has already been reported in [Issues](https://github.com/yourusername/github-context-generator/issues)
+1. Check if the bug has already been reported in [Issues](https://github.com/yourusername/github-llm-context-generator/issues)
 2. If not, create a new issue with:
    - Clear description of the bug
    - Steps to reproduce
@@ -16,7 +16,7 @@ Thank you for your interest in contributing to GitHub Context Generator! We welc
 
 ### Suggesting Features
 
-1. Check if the feature has been suggested in [Issues](https://github.com/yourusername/github-context-generator/issues)
+1. Check if the feature has been suggested in [Issues](https://github.com/yourusername/github-llm-context-generator/issues)
 2. If not, create a new issue with:
    - Clear description of the feature
    - Use cases
@@ -37,8 +37,8 @@ Thank you for your interest in contributing to GitHub Context Generator! We welc
 
 ```bash
 # Clone your fork
-git clone https://github.com/yourusername/github-context-generator.git
-cd github-context-generator
+git clone https://github.com/yourusername/github-llm-context-generator.git
+cd github-llm-context-generator
 
 # Install dependencies
 npm install
