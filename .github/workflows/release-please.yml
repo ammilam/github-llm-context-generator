@@ -1,0 +1,44 @@
+name: Release Please
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        id: release
+        with:
+          release-type: node
+          package-name: github-llm-context-generator
+          bump-minor-pre-major: true
+          bump-patch-for-minor-pre-major: true
+          
+      # The logic below handles the npm publication
+      - uses: actions/checkout@v3
+        if: ${{ steps.release.outputs.release_created }}
+        
+      - uses: actions/setup-node@v3
+        if: ${{ steps.release.outputs.release_created }}
+        with:
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
+          
+      - run: npm install
+        if: ${{ steps.release.outputs.release_created }}
+        
+      - run: npm test
+        if: ${{ steps.release.outputs.release_created }}
+        
+      - run: npm publish
+        if: ${{ steps.release.outputs.release_created }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
