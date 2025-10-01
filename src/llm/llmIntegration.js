@@ -263,7 +263,7 @@ class LLMIntegration {
       if (fileData.functions) {
         fileData.functions.forEach(func => {
           const startLine = func.line - 1;
-          const endLine = this.findFunctionEnd(lines, startLine);
+          const endLine = this.findFunctionEnd(lines, startLine, fileData);
           functionLines.set(func.name, { start: startLine, end: endLine });
         });
       }
@@ -272,7 +272,7 @@ class LLMIntegration {
       if (fileData.classes) {
         fileData.classes.forEach(cls => {
           const startLine = cls.line - 1;
-          const endLine = this.findClassEnd(lines, startLine);
+          const endLine = this.findClassEnd(lines, startLine, fileData);
           classLines.set(cls.name, { start: startLine, end: endLine });
         });
       }
@@ -318,7 +318,7 @@ class LLMIntegration {
     return fileData.raw ? fileData.raw.substring(0, maxLength) : '';
   }
 
-  findFunctionEnd(lines, startLine) {
+  findFunctionEnd(lines, startLine, fileData) {
     // Simple heuristic: find the next function or end of file
     let braceCount = 0;
     let inFunction = false;
@@ -340,7 +340,7 @@ class LLMIntegration {
       }
       
       // For Python, look for dedentation
-      if (fileData.type === 'python' && i > startLine) {
+      if (fileData && fileData.type === 'python' && i > startLine) {
         const currentIndent = line.match(/^\s*/)[0].length;
         const startIndent = lines[startLine].match(/^\s*/)[0].length;
         if (currentIndent <= startIndent && line.trim() !== '') {
@@ -352,9 +352,9 @@ class LLMIntegration {
     return Math.min(startLine + 50, lines.length);
   }
 
-  findClassEnd(lines, startLine) {
+  findClassEnd(lines, startLine, fileData) {
     // Similar to findFunctionEnd but for classes
-    return this.findFunctionEnd(lines, startLine);
+    return this.findFunctionEnd(lines, startLine, fileData);
   }
 
   mergeRanges(ranges) {
