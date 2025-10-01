@@ -20,12 +20,10 @@ async function vibeCodingExample() {
     // Load a repository with specific paths
     console.log('📦 Loading repository with targeted paths...');
     const repos = await generator.loadRepositories([{
-      url: 'https://github.com/google/adk-samples',
+      url: 'https://github.com/a2aproject/a2a-samples',
       branch: 'main',
       paths: [
-        'python/agents/data-science',
-        'python/agents/RAG',
-        'python/README.md'
+        'samples/python'
       ]
     }]);
     
@@ -33,7 +31,7 @@ async function vibeCodingExample() {
     
     // Example 1: Find implementation patterns
     console.log('🔍 Finding agent implementation patterns...');
-    const agentContext = await generator.getContext('agent class implementation tools', {
+    const agentContext = await generator.getContext('mcp', {
       format: 'markdown',
       maxNodes: 100,
       maxFiles: 10,
